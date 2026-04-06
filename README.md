@@ -1,12 +1,12 @@
 <div align="center">
   <h1>Hands-on H&M Real-Time Personalized Recommender</h1>
-  <p class="tagline">Open-source course by <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a>.</p>
+  <p class="tagline">Open-source course by <a href="https://decodingai.com">Decoding AI</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a>.</p>
 </div>
 
 </br>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+  <a href="https://www.decodingai.com/t/personalized-recommender">
     <img src="assets/system_architecture.png" alt="Architecture" width="600">
   </a>
 </p>
@@ -29,7 +29,7 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 ## 📖 About This Course
 
-This course is part of Decoding ML's open-source series, where we provide free hands-on resources for building GenAI and recommender systems.
+This course is part of Decoding AI's open-source series, where we provide free hands-on resources for building GenAI and recommender systems.
 
 The **Hands-on H&M Real-Time Personalized Recommender**, in collaboration with [Hopsworks](https://rebrand.ly/homepage-github), is a 5-module course backed up by code, Notebooks and lessons that will teach you how to build an H&M real-time personalized recommender from scratch.
 
@@ -58,7 +58,7 @@ Try out our deployed H&M real-time personalized recommender to see what you'll l
 > The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 <p align="center">
-  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+  <a href="https://www.decodingai.com/t/personalized-recommender">
     <img src="assets/ui_example.png" alt="UI Example" width="800">
   </a>
 </p>
@@ -68,21 +68,21 @@ Try out our deployed H&M real-time personalized recommender to see what you'll l
 <table style="border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="20%" style="border: none;">
-      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+      <a href="https://decodingai.com/" aria-label="Decoding AI">
         <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
       </a>
     </td>
     <td width="80%" style="border: none;">
       <div>
         <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
+        <p><b><a href="https://decodingai.com/">Join Decoding AI</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
       </div>
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/">
+  <a href="https://decodingai.com/">
     <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
   </a>
 </p>
@@ -115,7 +115,7 @@ All tools used throughout the course will stick to their free tier, except OpenA
 
 As an open-source course, you don't have to enroll. Everything is self-paced, free of charge and with its resources freely accessible as follows:
 - **code**: this GitHub repository
-- **articles**: [Decoding ML](https://decodingml.substack.com/p/the-ultimate-recommender-system-framework)
+- **articles**: [Decoding AI](https://www.decodingai.com/p/the-ultimate-recommender-system-framework)
 
 ## 📚 Course Outline
 
@@ -131,11 +131,11 @@ Our recommendation for each module:
 
 | Module | Article | Description | Notebooks |
 |--------|-------|-------------|----------------|
-| 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** |
-| 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) |
-| 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
-| 4 | [Deploy scalable TikTok-like recommenders](https://decodingml.substack.com/p/deploy-scalable-tiktok-like-recommenders) | Learn how to architect and deploy the inference pipelines for real-time recommendations using the 4-stage design. | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) |
-| 5 | [Using LLMs to build TikTok-like recommenders](https://decodingml.substack.com/p/using-llms-to-build-tiktok-like-recommenders) | Learn how to enhance the H&M personalized recommender with LLMs. | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
+| 1 | [Building a TikTok-like recommender](https://www.decodingai.com/p/the-ultimate-recommender-system-framework) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** |
+| 2 | [Feature pipelines for TikTok-like recommenders](https://www.decodingai.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) |
+| 3 | [Training pipelines for TikTok-like recommenders](https://www.decodingai.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
+| 4 | [Deploy scalable TikTok-like recommenders](https://www.decodingai.com/p/deploy-scalable-tiktok-like-recommenders) | Learn how to architect and deploy the inference pipelines for real-time recommendations using the 4-stage design. | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) |
+| 5 | [Using LLMs to build TikTok-like recommenders](https://www.decodingai.com/p/using-llms-to-build-tiktok-like-recommenders) | Learn how to enhance the H&M personalized recommender with LLMs. | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
 
 ### Google Colab
 
@@ -146,21 +146,21 @@ To run the Notebooks in Google Colab, copy-paste them into your Google Drive, op
 <table style="border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="20%" style="border: none;">
-      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+      <a href="https://decodingai.com/" aria-label="Decoding AI">
         <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
       </a>
     </td>
     <td width="80%" style="border: none;">
       <div>
         <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
+        <p><b><a href="https://decodingai.com/">Join Decoding AI</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
       </div>
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/">
+  <a href="https://decodingai.com/">
     <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
   </a>
 </p>
@@ -194,7 +194,7 @@ It contains:
 - 137k customers
 - 31 million transactions 
 
-More on the dataset in the feature engineering pipeline [Notebook](notebooks/1_fp_computing_features.ipynb) and [article](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like).
+More on the dataset in the feature engineering pipeline [Notebook](notebooks/1_fp_computing_features.ipynb) and [article](https://www.decodingai.com/p/feature-pipeline-for-tiktok-like).
 
 ## 🚀 Getting Started
 
@@ -283,21 +283,21 @@ This course is an open-source project released under the MIT license. Thus, as l
 <table style="border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="20%" style="border: none;">
-      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+      <a href="https://decodingai.com/" aria-label="Decoding AI">
         <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
       </a>
     </td>
     <td width="80%" style="border: none;">
       <div>
         <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
+        <p><b><a href="https://decodingai.com/">Join Decoding AI</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
       </div>
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/">
+  <a href="https://decodingai.com/">
     <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
   </a>
 </p>
