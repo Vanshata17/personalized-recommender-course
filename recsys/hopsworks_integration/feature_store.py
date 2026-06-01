@@ -12,15 +12,22 @@ def _patch_hsml_serving():
     """Skip Kubernetes serving config fetch on free-tier instances that lack it."""
     try:
         from hsml.core import model_serving_api
-        from hopsworks_common.client.exceptions import RestAPIError
         _original = model_serving_api.ModelServingApi.load_default_configuration
         def _safe(self):
             try:
                 _original(self)
-            except RestAPIError:
+            except Exception:
                 pass
         model_serving_api.ModelServingApi.load_default_configuration = _safe
-    except ImportError:
+    except Exception:
+        pass
+
+    try:
+        from hsml.core import serving_api
+        def _safe_limits(self):
+            return None
+        serving_api.ServingApi.get_resource_limits = _safe_limits
+    except Exception:
         pass
 
 
