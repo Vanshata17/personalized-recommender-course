@@ -19,7 +19,7 @@ class Settings(BaseSettings):
 
     # Hopsworks
     HOPSWORKS_API_KEY: SecretStr | None = None
-    HOPSWORKS_HOST: str | None = None
+    HOPSHOST: str | None = None
     HOPSWORKS_PROJECT_NAME: str = "hm_recommender"
 
     # OpenAI
