@@ -13,12 +13,14 @@ class CustomerDatasetSize(Enum):
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(env_file=Path(__file__).parent.parent / ".env", env_file_encoding="utf-8")
 
     RECSYS_DIR: Path = Path(__file__).parent
 
     # Hopsworks
     HOPSWORKS_API_KEY: SecretStr | None = None
+    HOPSWORKS_HOST: str | None = None
+    HOPSWORKS_PROJECT_NAME: str = "hm_recommender"
 
     # OpenAI
     OPENAI_MODEL_ID: str = "gpt-4o-mini"

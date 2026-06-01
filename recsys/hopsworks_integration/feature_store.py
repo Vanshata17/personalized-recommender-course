@@ -12,6 +12,8 @@ def get_feature_store():
     if settings.HOPSWORKS_API_KEY:
         logger.info("Loging to Hopsworks using HOPSWORKS_API_KEY env var.")
         project = hopsworks.login(
+            host=settings.HOPSWORKS_HOST,
+            project=settings.HOPSWORKS_PROJECT_NAME,
             api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value()
         )
     else:
@@ -26,6 +28,7 @@ def get_feature_store():
 
 
 def create_customers_feature_group(fs, df: pd.DataFrame, online_enabled: bool = True):
+    # Step 1: Get or create feature group
     customers_fg = fs.get_or_create_feature_group(
         name="customers",
         description="Customers data including age and postal code",
@@ -33,8 +36,9 @@ def create_customers_feature_group(fs, df: pd.DataFrame, online_enabled: bool = 
         primary_key=["customer_id"],
         online_enabled=online_enabled,
     )
+    # Step 2: Insert data
     customers_fg.insert(df, wait=True)
-
+    # Step 3: Add descriptions to each feature
     for desc in constants.customer_feature_descriptions:
         customers_fg.update_feature_description(desc["name"], desc["description"])
 

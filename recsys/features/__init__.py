@@ -1,4 +1,4 @@
-from . import articles, customers, embeddings, interaction, ranking, transactions
+from . import articles, customers, interaction, ranking, transactions
 
 __all__ = [
     "articles",
