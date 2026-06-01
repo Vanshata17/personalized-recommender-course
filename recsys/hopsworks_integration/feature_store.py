@@ -14,7 +14,8 @@ def get_feature_store():
         project = hopsworks.login(
             host=settings.HOPSHOST,
             project=settings.HOPSWORKS_PROJECT_NAME,
-            api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value()
+            api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value(),
+            hostname_verification=False,
         )
     else:
         logger.info("Login to Hopsworks using cached API key.")
