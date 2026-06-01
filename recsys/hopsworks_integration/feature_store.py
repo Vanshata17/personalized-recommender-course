@@ -12,7 +12,7 @@ def get_feature_store():
     if settings.HOPSWORKS_API_KEY:
         logger.info("Loging to Hopsworks using HOPSWORKS_API_KEY env var.")
         project = hopsworks.login(
-            host=settings.HOPSWORKS_HOST,
+            host=settings.HOPSHOST,
             project=settings.HOPSWORKS_PROJECT_NAME,
             api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value()
         )
