@@ -25,3 +25,12 @@ runs:
       shell: bash
       run: |
         uv pip install --all-extras --requirement pyproject.toml
+
+    - name: Patch hsml for free-tier Hopsworks
+      shell: python
+      run: |
+        import hsml.core.serving_api as sa, inspect
+        src = inspect.getfile(sa)
+        patch = "\nServingApi.get_resource_limits = lambda self: None\nServingApi.get_num_instances_limits = lambda self: None\nServingApi.get_knative_domain = lambda self: None\n"
+        open(src, 'a').write(patch)
+        print("Patched", src)
