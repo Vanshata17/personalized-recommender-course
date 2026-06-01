@@ -180,6 +180,10 @@ class TwoTowerModel(tf.keras.Model):
         # Set up a gradient tape to record gradients.
         with tf.GradientTape() as tape:
             # Loss computation.
+            # The metrics returned by the training step are the 3 types of losses calculated earlier:
+            # Retrieval loss: This measures how well the model matches user embeddings to the correct item embeddings.
+            # Regularization loss: This prevents overfitting by adding penalties for model complexity, such as large weights. It encourages the model to generalize unseen data better.
+            # Total loss: The sum of the retrieval loss and regularization loss. It represents the overall objective the model is optimizing during training.
             user_embeddings = self.query_model(batch)
             item_embeddings = self.item_model(batch)
             loss = self.task(
@@ -227,13 +231,16 @@ class TwoTowerModel(tf.keras.Model):
 
         return metrics
 
-
+# The TwoTowerDataset class is responsible for preparing 
+# the data for training the two-tower model.
 class TwoTowerDataset:
     def __init__(self, feature_view, batch_size: int) -> None:
         self._feature_view = feature_view
         self._batch_size = batch_size
         self._properties: dict | None
-
+    # Defines properties for query and candidate features, 
+    # ensuring that they are only accessed after the dataset 
+    # has been initialized with train/validation splits.
     @property
     def query_features(self) -> list[str]:
         return ["customer_id", "age", "month_sin", "month_cos"]
@@ -245,7 +252,10 @@ class TwoTowerDataset:
             "garment_group_name",
             "index_group_name",
         ]
-
+    #What it does:
+    #Returns stored properties
+    #Asserts that get_train_val_split() was called first
+    #Prevents errors if accessed before initialization
     @property
     def properties(self) -> dict:
         assert self._properties is not None, "Call get_train_val_split() first."
@@ -253,12 +263,24 @@ class TwoTowerDataset:
         return self._properties
 
     def get_items_subset(self):
+        # Select columns: ["article_id", "garment_group_name", "index_group_name"]
+        # Shape: (rows, 3)
         item_df = self.properties["train_df"][self.candidate_features]
+        # Remove duplicate articles
+        # Keep only first occurrence of each article_id
+        # Shape reduces from 200K to 100K rows
         item_df.drop_duplicates(subset="article_id", inplace=True)
+        # convert to tf dataset with dict of column names to values
+        #Gets unique items for pre-computing embeddings
+        # Used in TwoTowerModel for retrieval task
         item_ds = self.df_to_ds(item_df)
 
         return item_ds
-
+    # Retrieves train and validation splits from feature view and converts them to tf datasets
+    # Caches datasets for performance and shuffles training data for better generalization
+    # Stores properties like user/item ids and group names for model building and training
+    # Ensures that properties are only accessed after initialization to prevent errors
+    # Used in TwoTowerTrainer to get data for training and validation
     def get_train_val_split(self):
         logger.info("Retrieving and creating train, val test split...")
 
@@ -290,11 +312,17 @@ class TwoTowerDataset:
         }
 
         return train_ds, val_ds
-
+    
     def df_to_ds(self, df):
         return tf.data.Dataset.from_tensor_slices({col: df[col] for col in df})
 
-
+# The TwoTowerTrainer class is responsible for training the two-tower model. 
+# It initializes the query tower with the training data, 
+# compiles the model with an AdamW optimizer, and runs the 
+# training loop for a specified number of epochs. 
+# The _initialize_query_model method ensures that the age 
+# normalization layer in the query tower is properly adapted 
+# to the training data before training begins.
 class TwoTowerTrainer:
     def __init__(self, dataset: TwoTowerDataset, model: TwoTowerModel) -> None:
         self._dataset = dataset
@@ -326,6 +354,13 @@ class TwoTowerTrainer:
         self._model.query_model.normalized_age.adapt(train_ds.map(lambda x: x["age"]))
 
         # Initialize model with inputs.
+        # Get user features: customer_id, age, month_sin, month_cos
         query_df = self._dataset.properties["query_df"]
+        # Convert to Dataset and batch with size 1
         query_ds = self._dataset.df_to_ds(query_df).batch(1)
+        # Pass one batch through model
+        # Initializes all weights and layers in the query 
+        # tower, including the age normalization layer 
+        # which needs to see data to compute mean and variance 
+        # for normalization
         self._model.query_model(next(iter(query_ds)))

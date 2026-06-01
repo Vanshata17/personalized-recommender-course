@@ -123,6 +123,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.example
 .env.old
 .venv
 env/
@@ -167,3 +168,6 @@ catboost_info
 
 # MacOS
 .DS_Store
+
+env/
+venv/

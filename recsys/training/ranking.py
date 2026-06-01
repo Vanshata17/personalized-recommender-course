@@ -31,13 +31,17 @@ class RankingModelTrainer:
 
     def get_model(self):
         return self._model
-
+    # The get_model method simply returns the trained model 
+    # instance, allowing other parts of the code to access 
+    # the model after training is complete.
     def _initialize_dataset(self, train_dataset, eval_dataset):
         X_train, y_train = train_dataset
         X_val, y_val = eval_dataset
 
         cat_features = list(X_train.select_dtypes(include=["string", "object"]).columns)
-
+        # Identifies categorical features in the training 
+        # dataset by selecting columns with string or object 
+        # data types.
         pool_train = Pool(X_train, y_train, cat_features=cat_features)
         pool_val = Pool(X_val, y_val, cat_features=cat_features)
 
@@ -48,9 +52,7 @@ class RankingModelTrainer:
             self._train_dataset,
             eval_set=self._eval_dataset,
         )
-
         return self._model
-
     def evaluate(self, log: bool = False):
         preds = self._model.predict(self._eval_dataset)
 
@@ -66,7 +68,6 @@ class RankingModelTrainer:
             "recall": recall,
             "fscore": fscore,
         }
-
     def get_feature_importance(self) -> dict:
         feat_to_score = {
             feature: score

@@ -16,6 +16,11 @@ def generate_interaction_data(trans_df):
         return base_timestamp - (hours * 3600000)
 
     # Ratios to ensure more realistic interactions
+    # 90% of purchases had prior clicks
+    # each customer ignores 40–60 articles
+    # 5–8 random extra clicks per customer
+    # 95% of customers have extra clicks
+
     CLICK_BEFORE_PURCHASE_PROB = 0.9
     MIN_IGNORES = 40
     MAX_IGNORES = 60
