@@ -15,22 +15,27 @@ runs:
       with:
         version: ${{ inputs.uv-version }}
 
-    - name: Create and activate virtual environment
+    - name: Create virtual environment and install dependencies
       shell: bash
       run: |
         uv venv
-        source .venv/bin/activate
+        uv pip install pip
+        uv pip install --all-extras -e .
 
-    - name: Install the project
+    - name: Register Jupyter kernel
       shell: bash
       run: |
-        uv pip install --all-extras --requirement pyproject.toml
+        uv run python -m ipykernel install --sys-prefix --name recsys-personalized --display-name "recsys-personalized"
+        uv run python -m ipykernel install --sys-prefix --name python3 --display-name "Python 3"
 
     - name: Patch hsml for free-tier Hopsworks
-      shell: python
+      shell: bash
       run: |
-        import hsml.core.serving_api as sa, inspect
+        uv run python << 'EOF'
+        import hsml.core.serving_api as sa
+        import inspect
         src = inspect.getfile(sa)
         patch = "\nServingApi.get_resource_limits = lambda self: None\nServingApi.get_num_instances_limits = lambda self: None\nServingApi.get_knative_domain = lambda self: None\n"
         open(src, 'a').write(patch)
         print("Patched", src)
+        EOF
